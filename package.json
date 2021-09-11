@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:ui": "rm -rf build && cd ../../part2/phonebook && npm run build --prod && cp -r build ../../part3/phonebook",
+    "deploy": "git push heroku main",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy"
   },
   "author": "Martin Cervantes",
   "license": "MIT",
@@ -14,6 +16,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mongoose": "^6.0.5",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
